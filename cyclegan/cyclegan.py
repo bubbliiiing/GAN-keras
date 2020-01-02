@@ -134,8 +134,8 @@ class CycleGAN():
         return Model(img, validity)
     
     def scheduler(self,models,epoch):
-        # 每隔100个epoch，学习率减小为原来的1/2
-        if epoch % 20 == 0 and epoch != 0:
+        # 每隔40个epoch，学习率减小为原来的1/2
+        if epoch % 40 == 0 and epoch != 0:
             for model in models:
                 lr = K.get_value(model.optimizer.lr)
                 K.set_value(model.optimizer.lr, lr * 0.5)
