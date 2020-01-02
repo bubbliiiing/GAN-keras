@@ -10,7 +10,7 @@ from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
 import matplotlib.pyplot as plt
-
+import os
 import numpy as np
 
 class ACGAN():
@@ -203,5 +203,7 @@ class ACGAN():
         save(self.discriminator, "discriminator")
 
 if __name__ == '__main__':
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
     acgan = ACGAN()
     acgan.train(epochs=20000, batch_size=256, sample_interval=200)
