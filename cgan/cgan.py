@@ -10,6 +10,7 @@ from keras.optimizers import Adam
 
 import matplotlib.pyplot as plt
 
+import os 
 import numpy as np
 
 class CGAN():
@@ -161,5 +162,7 @@ class CGAN():
 
 
 if __name__ == '__main__':
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
     cgan = CGAN()
     cgan.train(epochs=20000, batch_size=256, sample_interval=200)
