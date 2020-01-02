@@ -89,8 +89,8 @@ class DCGAN():
         model = Sequential()
         # 28, 28, 1 -> 14, 14, 32
         model.add(Conv2D(32, kernel_size=3, strides=2, input_shape=self.img_shape, padding="same"))
-        model.add(LeakyReLU(alpha=0.2))
         model.add(BatchNormalization(momentum=0.8))
+        model.add(LeakyReLU(alpha=0.2))
         # 14, 14, 32 -> 7, 7, 64
         model.add(Conv2D(64, kernel_size=3, strides=2, padding="same"))
         model.add(BatchNormalization(momentum=0.8))
@@ -167,5 +167,7 @@ class DCGAN():
 
 
 if __name__ == '__main__':
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
     dcgan = DCGAN()
     dcgan.train(epochs=20000, batch_size=256, save_interval=50)
