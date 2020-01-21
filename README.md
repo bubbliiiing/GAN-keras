@@ -7,6 +7,7 @@
 - [x] cgan
 - [x] acgan
 - [x] cogan
+- [x] srgan
 - [x] cyclegan-keras
 - [ ] cyclegan-pytorch
 
