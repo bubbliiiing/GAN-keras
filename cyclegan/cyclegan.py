@@ -24,14 +24,14 @@ class CycleGAN():
         config.gpu_options.per_process_gpu_memory_fraction = 0.7
         config.gpu_options.allow_growth = True
         set_session(tf.Session(config=config)) 
-        # 输入图片的大小为256x256x3
-        self.img_rows = 256
-        self.img_cols = 256
+        # 输入图片的大小为128x128x3
+        self.img_rows = 128
+        self.img_cols = 128
         self.channels = 3
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
         
         # 载入数据
-        self.dataset_name = 'horse2zebra'
+        self.dataset_name = 'monet2photo'
         self.data_loader = DataLoader(dataset_name=self.dataset_name,
                                       img_res=(self.img_rows, self.img_cols))
 
@@ -51,7 +51,7 @@ class CycleGAN():
         #-------------------------#
         self.d_A = self.build_discriminator()
         self.d_B = self.build_discriminator()
-
+        self.d_B.summary()
         self.d_A.compile(loss='mse',
             optimizer=optimizer,
             metrics=['accuracy'])
@@ -120,22 +120,24 @@ class CycleGAN():
             return d
 
         img = Input(shape=self.img_shape)
-        # 128
+        # 64,64,64
         d1 = conv2d(img, 64, normalization=False)
-        # 64
+        # 32,32,128
         d2 = conv2d(d1, 128)
-        # 32
+        # 16,16,256
         d3 = conv2d(d2, 256)
-        # 16
+        # 8,8,512
         d4 = conv2d(d3, 512)
         # 对每个像素点判断是否有效
+        # 64
+        # 8,8,1
         validity = Conv2D(1, kernel_size=3, strides=1, padding='same')(d4)
 
         return Model(img, validity)
     
     def scheduler(self,models,epoch):
-        # 每隔40个epoch，学习率减小为原来的1/2
-        if epoch % 40 == 0 and epoch != 0:
+        # 每隔100个epoch，学习率减小为原来的1/2
+        if epoch % 20 == 0 and epoch != 0:
             for model in models:
                 lr = K.get_value(model.optimizer.lr)
                 K.set_value(model.optimizer.lr, lr * 0.5)
