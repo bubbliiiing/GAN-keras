@@ -1,6 +1,10 @@
 ## GAN生成对抗网络在Keras当中的实现
 ---
 
+## 注意事项
+建立了一个新库可用于生成自己的图片文件，连接如下，具体gan种类为DCGAN：https://github.com/bubbliiiing/dcgan-keras  
+执行过程可参考对应博客或者README.md，https://blog.csdn.net/weixin_44791964/article/details/110526044。
+
 ### 目录
 1. [所需环境 Environment](#所需环境)
 2. [仓库内容 WhatsIn](#仓库内容)
