@@ -2,7 +2,7 @@
 ---
 
 ## 注意事项
-该库上传时间较早，结构不明确，功能有限，本人进行了一定重置。   
+该库上传时间较早，结构不明确且功能有限，本人进行了一定重置，重置后网络结构与功能会相对更好一些。    
 
 DCGAN：https://github.com/bubbliiiing/dcgan-keras  
 SRGAN：https://github.com/bubbliiiing/srgan-keras  
