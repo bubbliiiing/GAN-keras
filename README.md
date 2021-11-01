@@ -2,8 +2,10 @@
 ---
 
 ## 注意事项
-建立了一个新库可用于生成自己的图片文件，连接如下，具体gan种类为DCGAN：https://github.com/bubbliiiing/dcgan-keras  
-执行过程可参考对应博客或者README.md，https://blog.csdn.net/weixin_44791964/article/details/110526044
+该库上传时间较早，结构不明确，功能有限，本人进行了一定重置。   
+
+DCGAN：https://github.com/bubbliiiing/dcgan-keras  
+SRGAN：https://github.com/bubbliiiing/srgan-keras  
 
 ### 目录
 1. [所需环境 Environment](#所需环境)
